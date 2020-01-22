@@ -43,4 +43,17 @@ public class ProduitManager {
         }
         return retour;
     }
+
+    public static ArrayList<Produit> getByIdProduit(int id) {
+        if (produits == null) {
+            init();
+        }
+        ArrayList<Produit> retourProduitParId = new ArrayList<>();
+        for (Produit p2 : produits) {
+            if (p2.getId_categorie() == id) {
+                retourProduitParId.add(p2);
+            }
+        }
+        return retourProduitParId;
+    }
 }
