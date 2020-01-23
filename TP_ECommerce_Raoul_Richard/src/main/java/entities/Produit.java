@@ -11,16 +11,10 @@ package entities;
  */
 public class Produit {
     private int id;
-    private String nom;
-    private int id_categorie;
+    private String produitName;
+    private int categorieId;
     private double prix;
-
-    public Produit(int id, String nom, int id_categorie, double prix) {
-        this.id = id;
-        this.nom = nom;
-        this.id_categorie = id_categorie;
-        this.prix = prix;
-    }
+    private int stock;
 
     public int getId() {
         return id;
@@ -30,20 +24,20 @@ public class Produit {
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getProduitName() {
+        return produitName;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setProduitName(String produitName) {
+        this.produitName = produitName;
     }
 
-    public int getId_categorie() {
-        return id_categorie;
+    public int getCategorieId() {
+        return categorieId;
     }
 
-    public void setId_categorie(int id_categorie) {
-        this.id_categorie = id_categorie;
+    public void setCategorieId(int categorieId) {
+        this.categorieId = categorieId;
     }
 
     public double getPrix() {
@@ -53,4 +47,26 @@ public class Produit {
     public void setPrix(double prix) {
         this.prix = prix;
     }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public Produit(int id, String produitName, int categorieId, double prix, int stock) {
+        this.id = id;
+        this.produitName = produitName;
+        this.categorieId = categorieId;
+        this.prix = prix;
+        this.stock = stock;
+    }
+
+    public Produit() {
+    }
+    
+
+    
 }

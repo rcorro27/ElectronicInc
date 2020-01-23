@@ -12,43 +12,44 @@ package entities;
 public class Photos {
 
   
-    private String url;
-    private Categorie nomCategorie;
-    private Produit idProduit;
+    private String urlImage;
+    private int id;
+    private int produitId;
 
     public Photos() {
     }
 
-    public Photos(String url, Categorie nomCategorie, Produit idProduit) {
-        this.url = url;
-        this.nomCategorie = nomCategorie;
-        this.idProduit = idProduit;
+    public Photos(String urlImage, int id, int produitId) {
+        this.urlImage = urlImage;
+        this.id = id;
+        this.produitId = produitId;
     }
 
-    public String getUrl() {
-        return url;
+    public String getUrlImage() {
+        return urlImage;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
     }
 
-    public Categorie getNomCategorie() {
-        return nomCategorie;
+    public int getId() {
+        return id;
     }
 
-    public void setNomCategorie(Categorie nomCategorie) {
-        this.nomCategorie = nomCategorie;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public Produit getIdProduit() {
-        return idProduit;
+    public int getProduitId() {
+        return produitId;
     }
 
-    public void setIdProduit(Produit idProduit) {
-        this.idProduit = idProduit;
+    public void setProduitId(int produitId) {
+        this.produitId = produitId;
     }
 
+   
    
     
 

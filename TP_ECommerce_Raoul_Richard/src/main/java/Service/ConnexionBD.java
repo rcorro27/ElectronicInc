@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  */
 public class ConnexionBD {
 
-    private static String url = "jdbc:mysql://localhost:3310/bd_cour_demo?serverTimezone=UTC";
+    private static String url = "jdbc:mysql://localhost:3310/bd_boutique?serverTimezone=UTC";
     private static String login = "root";
     private static String pwd = "abc123...";
     private static Connection connection;

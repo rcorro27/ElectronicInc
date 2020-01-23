@@ -13,15 +13,15 @@ import java.util.Date;
  */
 public class Commandes {
     private int id;
-    private int userid;
-    private Produit idproduit;
-    private Date dateorder;
+    private int userId;
+    private double prixTotal;
+    private Date orderDate;
 
-    public Commandes(int id, int userid, Produit idproduit, Date dateorder) {
+    public Commandes(int id, int userId, double prixTotal, Date orderDate) {
         this.id = id;
-        this.userid = userid;
-        this.idproduit = idproduit;
-        this.dateorder = dateorder;
+        this.userId = userId;
+        this.prixTotal = prixTotal;
+        this.orderDate = orderDate;
     }
 
     public Commandes() {
@@ -35,21 +35,31 @@ public class Commandes {
         this.id = id;
     }
 
-    public Produit getIdproduit() {
-        return idproduit;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setIdproduit(Produit idproduit) {
-        this.idproduit = idproduit;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public Date getDateorder() {
-        return dateorder;
+    public double getPrixTotal() {
+        return prixTotal;
     }
 
-    public void setDateorder(Date dateorder) {
-        this.dateorder = dateorder;
+    public void setPrixTotal(double prixTotal) {
+        this.prixTotal = prixTotal;
     }
+
+    public Date getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
+    }
+
     
+  
     
 }

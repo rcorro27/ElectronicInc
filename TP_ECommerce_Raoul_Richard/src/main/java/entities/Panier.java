@@ -10,37 +10,37 @@ package entities;
  * @author rcorroch
  */
 public class Panier {
-    private int orderid;
-    private String produitid;
+    private int orderId;
+    private int produitId;
     private int quantite;
-    private double prix;
-    private User utilisateur;
+    private double prixUnitaire;
+    private int id;
 
     public Panier() {
     }
 
-    public Panier(int orderid, String produitid, int quantite, double prix, User utilisateur) {
-        this.orderid = orderid;
-        this.produitid = produitid;
+    public Panier(int orderId, int produitId, int quantite, double prixUnitaire, int id) {
+        this.orderId = orderId;
+        this.produitId = produitId;
         this.quantite = quantite;
-        this.prix = prix;
-        this.utilisateur = utilisateur;
+        this.prixUnitaire = prixUnitaire;
+        this.id = id;
     }
 
-    public int getOrderid() {
-        return orderid;
+    public int getOrderId() {
+        return orderId;
     }
 
-    public void setOrderid(int orderid) {
-        this.orderid = orderid;
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
-    public String getProduitid() {
-        return produitid;
+    public int getProduitId() {
+        return produitId;
     }
 
-    public void setProduitid(String produitid) {
-        this.produitid = produitid;
+    public void setProduitId(int produitId) {
+        this.produitId = produitId;
     }
 
     public int getQuantite() {
@@ -51,21 +51,21 @@ public class Panier {
         this.quantite = quantite;
     }
 
-    public double getPrix() {
-        return prix;
+    public double getPrixUnitaire() {
+        return prixUnitaire;
     }
 
-    public void setPrix(double prix) {
-        this.prix = prix;
+    public void setPrixUnitaire(double prixUnitaire) {
+        this.prixUnitaire = prixUnitaire;
     }
 
-    public User getUtilisateur() {
-        return utilisateur;
+    public int getId() {
+        return id;
     }
 
-    public void setUtilisateur(User utilisateur) {
-        this.utilisateur = utilisateur;
+    public void setId(int id) {
+        this.id = id;
     }
 
-
+    
 }

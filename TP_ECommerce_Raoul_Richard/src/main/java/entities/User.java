@@ -15,7 +15,8 @@ public class User {
     private String nom;
     private String type_user;
     private String email;
-    private String pwd;
+    private String password;
+    
     
 
    
@@ -24,18 +25,18 @@ public class User {
         this.nom = nom;
         this.type_user = type_user;
         this.email = email;
-        this.pwd = pwd;
+        this.password = pwd;
     }
 
     public User() {
     }
 
     public void setPwd(String pwd) {
-        this.pwd = pwd;
+        this.password = pwd;
     }
 
     public String getPwd() {
-        return pwd;
+        return password;
     }
 
     public int getId() {
