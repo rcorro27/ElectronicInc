@@ -10,37 +10,37 @@ package entities;
  * @author rcorroch
  */
 public class Panier {
-    private int orderId;
-    private int produitId;
+    private int orderid;
+    private int produitid;
     private int quantite;
-    private double prixUnitaire;
+    private double prixunitaire;
     private int id;
 
     public Panier() {
     }
 
-    public Panier(int orderId, int produitId, int quantite, double prixUnitaire, int id) {
-        this.orderId = orderId;
-        this.produitId = produitId;
+    public Panier(int orderid, int produitid, int quantite, double prixunitaire, int id) {
+        this.orderid = orderid;
+        this.produitid = produitid;
         this.quantite = quantite;
-        this.prixUnitaire = prixUnitaire;
+        this.prixunitaire = prixunitaire;
         this.id = id;
     }
 
-    public int getOrderId() {
-        return orderId;
+    public int getOrderid() {
+        return orderid;
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
+    public void setOrderid(int orderid) {
+        this.orderid = orderid;
     }
 
-    public int getProduitId() {
-        return produitId;
+    public int getProduitid() {
+        return produitid;
     }
 
-    public void setProduitId(int produitId) {
-        this.produitId = produitId;
+    public void setProduitid(int produitid) {
+        this.produitid = produitid;
     }
 
     public int getQuantite() {
@@ -51,12 +51,12 @@ public class Panier {
         this.quantite = quantite;
     }
 
-    public double getPrixUnitaire() {
-        return prixUnitaire;
+    public double getPrixunitaire() {
+        return prixunitaire;
     }
 
-    public void setPrixUnitaire(double prixUnitaire) {
-        this.prixUnitaire = prixUnitaire;
+    public void setPrixunitaire(double prixunitaire) {
+        this.prixunitaire = prixunitaire;
     }
 
     public int getId() {
@@ -66,6 +66,8 @@ public class Panier {
     public void setId(int id) {
         this.id = id;
     }
+
+    
 
     
 }
