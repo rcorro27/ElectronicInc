@@ -14,15 +14,17 @@ public class Panier {
     private String produitid;
     private int quantite;
     private double prix;
+    private User utilisateur;
 
     public Panier() {
     }
 
-    public Panier(int orderid, String produitid, int quantite, double prix) {
+    public Panier(int orderid, String produitid, int quantite, double prix, User utilisateur) {
         this.orderid = orderid;
         this.produitid = produitid;
         this.quantite = quantite;
         this.prix = prix;
+        this.utilisateur = utilisateur;
     }
 
     public int getOrderid() {
@@ -56,7 +58,14 @@ public class Panier {
     public void setPrix(double prix) {
         this.prix = prix;
     }
-    
-    
-    
+
+    public User getUtilisateur() {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(User utilisateur) {
+        this.utilisateur = utilisateur;
+    }
+
+
 }

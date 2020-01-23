@@ -5,10 +5,22 @@
  */
 package managers;
 
+import entities.Categorie;
+import java.util.ArrayList;
+
 /**
  *
  * @author rcorroch
  */
 public class CategorieManager {
+
+    static private ArrayList<Categorie> listCategorieInit;
+
+    public static ArrayList<Categorie> init() {
+        ArrayList<Categorie> listeCategorieInit= new ArrayList<>();
     
+    return null ;
+    
+    }
+
 }
