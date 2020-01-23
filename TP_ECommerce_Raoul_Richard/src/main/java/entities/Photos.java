@@ -12,25 +12,25 @@ package entities;
 public class Photos {
 
   
-    private String urlImage;
+    private String urlimage;
     private int id;
-    private int produitId;
+    private int produitid;
 
     public Photos() {
     }
 
-    public Photos(String urlImage, int id, int produitId) {
-        this.urlImage = urlImage;
+    public Photos(String urlimage, int id, int produitid) {
+        this.urlimage = urlimage;
         this.id = id;
-        this.produitId = produitId;
+        this.produitid = produitid;
     }
 
-    public String getUrlImage() {
-        return urlImage;
+    public String getUrlimage() {
+        return urlimage;
     }
 
-    public void setUrlImage(String urlImage) {
-        this.urlImage = urlImage;
+    public void setUrlimage(String urlimage) {
+        this.urlimage = urlimage;
     }
 
     public int getId() {
@@ -41,14 +41,15 @@ public class Photos {
         this.id = id;
     }
 
-    public int getProduitId() {
-        return produitId;
+    public int getProduitid() {
+        return produitid;
     }
 
-    public void setProduitId(int produitId) {
-        this.produitId = produitId;
+    public void setProduitid(int produitid) {
+        this.produitid = produitid;
     }
 
+   
    
    
     
