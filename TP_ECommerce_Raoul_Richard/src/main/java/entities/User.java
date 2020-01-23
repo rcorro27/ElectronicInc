@@ -13,30 +13,30 @@ public class User {
 
     private int id;
     private String nom;
-    private String type_user;
+    private String typeuser;
     private String email;
     private String password;
-    
-    
-
-   
-    public User(int id, String nom, String type_user, String email, String pwd) {
-        this.id = id;
-        this.nom = nom;
-        this.type_user = type_user;
-        this.email = email;
-        this.password = pwd;
-    }
+    private String username;
+    private String prenom;
+    private String adresse;
 
     public User() {
     }
 
-    public void setPwd(String pwd) {
-        this.password = pwd;
+    public User(int id, String nom, String typeuser, String email, String password, String username, String prenom, String adresse) {
+        this.id = id;
+        this.nom = nom;
+        this.typeuser = typeuser;
+        this.email = email;
+        this.password = password;
+        this.username = username;
+        this.prenom = prenom;
+        this.adresse = adresse;
     }
 
-    public String getPwd() {
-        return password;
+    public User(int id, String username) {
+        this.id = id;
+        this.username = username;
     }
 
     public int getId() {
@@ -55,12 +55,12 @@ public class User {
         this.nom = nom;
     }
 
-    public String getType_user() {
-        return type_user;
+    public String getTypeuser() {
+        return typeuser;
     }
 
-    public void setType_user(String type_user) {
-        this.type_user = type_user;
+    public void setTypeuser(String typeuser) {
+        this.typeuser = typeuser;
     }
 
     public String getEmail() {
@@ -70,4 +70,42 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+    
+    
+    
+
+   
+   
 }
