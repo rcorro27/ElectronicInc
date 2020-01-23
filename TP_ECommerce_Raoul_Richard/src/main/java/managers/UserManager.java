@@ -46,21 +46,12 @@ public class UserManager {
         }
         return user;
     }
-}
+    
+    public static ArrayList<User> setUser(int id, String nom, String type_user, String email, String password, String prenom, String username, String adresse) {
 
-public static ArrayList<User> setUser(int id, String nom, String type_user, String email, String password, String prenom, String username, String adresse) {
-
-        User nouveauUser = new User();
-        nouveauUser.setId(id);
-        nouveauUser.setNom(nom);
-        nouveauUser.setType_user(type_user);
-        nouveauUser.setEmail(email);
-        nouveauUser.setPassword(password);
-        nouveauUser.setPrenom(prenom);
-        nouveauUser.setUsername(username);
-        nouveauUser.setAdresse(adresse);
-        listuser.add(nouveauUser);
-
-        return listuser;
+        
+//change
+        return null;
     }
 }
+
