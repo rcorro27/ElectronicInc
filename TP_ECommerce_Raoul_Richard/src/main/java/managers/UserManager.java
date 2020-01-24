@@ -5,7 +5,7 @@
  */
 package managers;
 
-import Service.ConnexionBD;
+import services.ConnexionBDD;
 import entities.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,14 +18,14 @@ import java.util.logging.Logger;
  *
  * @author rcorroch
  */
-public class UserManager {
+/*public class UserManager {
 
     private static String queryGetUser = "Select username,password from user where username=? and password=?";
 
     public static User getuser(String username, String password) {
         User user =null;
         try {
-            PreparedStatement preparedStatement = ConnexionBD.getPreparedStatement(queryGetUser);
+            PreparedStatement preparedStatement = ConnexionBDD.getPreparedStatement(queryGetUser);
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -39,7 +39,7 @@ public class UserManager {
                     resultSet.getString("type_user"),
                     resultSet.getString("type_user"));
 
-            ConnexionBD.close();
+            ConnexionBDD.close();
 
         } catch (SQLException ex) {
             Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
@@ -63,4 +63,4 @@ public static ArrayList<User> setUser(int id, String nom, String type_user, Stri
 
         return listuser;
     }
-}
+}*/

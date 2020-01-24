@@ -5,10 +5,26 @@
  */
 package managers;
 
+import entities.Produit;
+import java.util.HashMap;
+import javax.servlet.http.HttpServletRequest;
+
 /**
  *
- * @author rcorroch
+ * @author rrobilla
  */
 public class PanierManager {
-    
+
+    private static HashMap<Integer, Produit> panier=null;
+
+    public static void addProduit(int produitId, HttpServletRequest request) {
+        if (panier == null) {
+            panier = new HashMap();
+        }
+        panier.put(produitId, ProduitManager.getProduit(produitId));
+    }
+
+    public static HashMap getPanier() {
+        return panier;
+    }
 }

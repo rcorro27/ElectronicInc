@@ -6,7 +6,13 @@
 package managers;
 
 import entities.Produit;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import services.ConnexionBDD;
 
 /**
  *
@@ -14,46 +20,85 @@ import java.util.ArrayList;
  */
 public class ProduitManager {
 
-    private static ArrayList<Produit> produits;
-
-    private static void init() {
-        produits = new ArrayList<>();
-        produits.add(new Produit(1, "laptop Asus", 1, 899.99));
-        produits.add(new Produit(2, "jeux Xbox GTA V", 2, 39.99));
-        produits.add(new Produit(3, "Ecran Acer 20p", 3, 199.99));
-        produits.add(new Produit(4, "Samsung Galaxy", 4, 699.99));
-    }
+    private static String queryGetAll = "select * from produit";
 
     public static ArrayList<Produit> getAll() {
-        if (produits == null) {
-            init();
-        }
-        return produits;
-    }
-
-    public static ArrayList<Produit> getByIdCategorie(int idCat) {
-        if (produits == null) {
-            init();
-        }
-        ArrayList<Produit> retour = new ArrayList<>();
-        for (Produit p : produits) {
-            if (p.getId_categorie() == idCat) {
-                retour.add(p);
+        ArrayList<Produit> retour = null;
+        try {
+            PreparedStatement preparedStatement = ConnexionBDD.getPreparedStatement(queryGetAll);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.isBeforeFirst()) {
+                retour = new ArrayList<>();
+                while (resultSet.next()) {
+                    retour.add(new Produit(resultSet.getInt("id"),
+                            resultSet.getString("produit_name"),
+                            resultSet.getInt("categorie_id"),
+                            resultSet.getDouble("prix"),
+                            resultSet.getInt("stock")));
+                }
             }
+
+            ConnexionBDD.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ProduitManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         return retour;
     }
 
-    public static ArrayList<Produit> getByIdProduit(int id) {
-        if (produits == null) {
-            init();
-        }
-        ArrayList<Produit> retourProduitParId = new ArrayList<>();
-        for (Produit p2 : produits) {
-            if (p2.getId_categorie() == id) {
-                retourProduitParId.add(p2);
+    private static String queryGetByIdCategorie = "select * from produit where categorie_id = ?";
+
+    public static ArrayList<Produit> getByIdCategorie(int idCat) {
+        ArrayList<Produit> retour = null;
+        try {
+
+            PreparedStatement preparedStatement = ConnexionBDD.getPreparedStatement(queryGetByIdCategorie);
+            preparedStatement.setInt(1, idCat);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.isBeforeFirst()) {
+                retour = new ArrayList<>();
+                while (resultSet.next()) {
+                    retour.add(new Produit(resultSet.getInt("id"),
+                            resultSet.getString("produit_name"),
+                            resultSet.getInt("categorie_id"),
+                            resultSet.getDouble("prix"),
+                            resultSet.getInt("stock")));
+                }
             }
+            ConnexionBDD.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProduitManager.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return retourProduitParId;
+        return retour;
+    }
+
+    private static String queryGetByIdProduit = "select * from produit where id = ?";
+
+    public static Produit getProduit(int id) {
+        Produit p = null;
+        try {
+
+            PreparedStatement preparedStatement = ConnexionBDD.getPreparedStatement(queryGetByIdCategorie);
+            preparedStatement.setInt(1, id - 1);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.isBeforeFirst()) {
+
+                while (resultSet.next()) {
+                    p = new Produit(resultSet.getInt("id"),
+                            resultSet.getString("produit_name"),
+                            resultSet.getInt("categorie_id"),
+                            resultSet.getDouble("prix"),
+                            resultSet.getInt("stock"));
+                }
+            }
+            ConnexionBDD.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProduitManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return p;
     }
 }
