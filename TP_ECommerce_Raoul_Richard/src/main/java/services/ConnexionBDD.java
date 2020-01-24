@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Service;
+package services;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  *
  * @author jlidou
  */
-public class ConnexionBD {
+public class ConnexionBDD {
 
     private static String url = "jdbc:mysql://localhost:3310/bd_boutique?serverTimezone=UTC";
     private static String login = "root";
@@ -30,9 +30,9 @@ public class ConnexionBD {
             connection = DriverManager.getConnection(url, login, pwd);
             preparedStatement = connection.prepareStatement(query);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ConnexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConnexionBDD.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ConnexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConnexionBDD.class.getName()).log(Level.SEVERE, null, ex);
         }
         return preparedStatement;
     }
@@ -42,7 +42,7 @@ public class ConnexionBD {
         try {
             connection.close();
         } catch (SQLException ex) {
-            Logger.getLogger(ConnexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConnexionBDD.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

@@ -6,8 +6,8 @@
 <%@page import="entities.Produit"%>
 <%@page import="java.util.ArrayList"%>
 <%
-    ArrayList<Produit> produits = (ArrayList<Produit>) request.getAttribute("listProducts");
-%>
+    ArrayList<Produit> produits = (ArrayList<Produit>) request.getAttribute("listProducts");%>
+    <%String idProduit = null;%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -17,20 +17,27 @@
         <title>Welcome Page</title>
     </head>
     <body>
+        <ul>
+            <li><a href="servletControler?idCategorie=1">Laptops</a></li>
+            <li><a href="servletControler?idCategorie=2">Cellulaires</a></li>
+            <li><a href="servletControler?idCategorie=3">Ecrans</a></li>
+            <li><a href="servletControler?idCategorie=4">Jeux videos</a></li>
+        </ul>
         <table>
             <tr>
-                <th>id</th>
                 <th>nom</th>
-                <th><a href="servletControler?idCategorie=2">dfgbnfh</a></th>
             </tr>
-          <%for(Produit p:produits) {%>
-          <tr>
-              <td><%=p.getId()%></td>
-              <td><%=p.getNom()%></td>
-              <%}%>
-          </tr>
+            <%for (Produit p : produits) {%>
+            
+            <%idProduit=String.valueOf(p.getId());%>
+            <tr> 
+                <td><%=p.getProduit_name()%></td>
+                <%}%>
+            </tr>
+            
         </table>
-        
-        
+                <a href="panierControler?idProduit=<%=idProduit%>">ajouter au panier</a>
+                <a href="panierControler?lien=1&idProduit=<%=idProduit%>">Afficher panier</a>
+
     </body>
 </html>

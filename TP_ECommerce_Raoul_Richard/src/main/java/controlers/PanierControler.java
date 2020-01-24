@@ -5,40 +5,37 @@
  */
 package controlers;
 
-import actions.ProduitAction;
+import actions.PanierAction;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author rrobilla
  */
-@WebServlet(name = "ServletControler", urlPatterns = {"/servletControler"})
-public class ServletControler extends HttpServlet {
+@WebServlet(name = "PanierControler", urlPatterns = {"/panierControler"})
+public class PanierControler extends HttpServlet {
 
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-      
-        //1 - recupe les parametres
-        String idCatString = request.getParameter("idCategorie");
-
-        // 2 -  appelle les actions en fonction des params
-        if (idCatString == null) {
-            ProduitAction.printAllProducts(request);
-        } else {
-            ProduitAction.printProductsByCat(request, Integer.parseInt(idCatString));
+        
+        String lien = request.getParameter("lien");
+        String id = request.getParameter("idProduit");
+        
+        if(lien==null) {
+            PanierAction.addProduitPanier(request, Integer.parseInt(id));
+            request.getRequestDispatcher("servletControler").forward(request, response);
         }
-
-        // 3- Redirection
-        request.getRequestDispatcher("page1test.jsp").forward(request, response);
+        else {
+            PanierAction.afficherPanier(request);
+            request.getRequestDispatcher("panier.jsp?idProduit="+id).forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
