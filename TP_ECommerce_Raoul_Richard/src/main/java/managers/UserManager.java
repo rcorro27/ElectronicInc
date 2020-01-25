@@ -7,9 +7,12 @@ package managers;
 
 import Service.ConnexionBD;
 import entities.User;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,24 +23,27 @@ import java.util.logging.Logger;
  */
 public class UserManager {
 
-    private static String queryGetUser = "Select username,password from user where username=? and password=?";
+    private final static  String querygetuser = "Select id, username from user where username = ? and password = ? ";
+    private final static  String querySetuser = "INSERT INTO user(username,password,prenom,nom,adresse,email,type_user)\n"
+            + "VALUES (?,?,?,?,?,?,?) ";
+    private final static String url = "jdbc:mysql://localhost:3310/bd_boutique?serverTimezone=UTC";
 
     public static User getuser(String username, String password) {
-        User user =null;
+        User user = null;
         try {
-            PreparedStatement preparedStatement = ConnexionBD.getPreparedStatement(queryGetUser);
+            PreparedStatement preparedStatement = ConnexionBD.getPreparedStatement(querygetuser);
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
+
             ResultSet resultSet = preparedStatement.executeQuery();
 
-             user = new User(resultSet.getInt("id"),
-                    resultSet.getString("nom"),
-                    resultSet.getString("type_user"),
-                    resultSet.getString("type_user"),
-                    resultSet.getString("type_user"),
-                    resultSet.getString("type_user"),
-                    resultSet.getString("type_user"),
-                    resultSet.getString("type_user"));
+            if (resultSet.isBeforeFirst()) {
+                while (resultSet.next()) {
+
+                    user = new User(resultSet.getInt("id"),
+                            resultSet.getString("username"));
+                }
+            }
 
             ConnexionBD.close();
 
@@ -46,21 +52,24 @@ public class UserManager {
         }
         return user;
     }
-}
 
-public static ArrayList<User> setUser(int id, String nom, String type_user, String email, String password, String prenom, String username, String adresse) {
+    public static void setUser(String nom, String type_user, String email, String password, String prenom, String username, String adresse) {
+        //change
+        try {
+            PreparedStatement preparedStatement = ConnexionBD.getPreparedStatement(querySetuser);
+            preparedStatement.setString(1, nom);
+            preparedStatement.setString(2, type_user);
+            preparedStatement.setString(3, email);
+            preparedStatement.setString(4, password);
+            preparedStatement.setString(5, prenom);
+            preparedStatement.setString(6, username);
+            preparedStatement.setString(7, adresse);
+            
+            preparedStatement.execute();
+            ConnexionBD.close();
 
-        User nouveauUser = new User();
-        nouveauUser.setId(id);
-        nouveauUser.setNom(nom);
-        nouveauUser.setType_user(type_user);
-        nouveauUser.setEmail(email);
-        nouveauUser.setPassword(password);
-        nouveauUser.setPrenom(prenom);
-        nouveauUser.setUsername(username);
-        nouveauUser.setAdresse(adresse);
-        listuser.add(nouveauUser);
-
-        return listuser;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

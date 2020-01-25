@@ -16,7 +16,7 @@ public class ProduitManager {
 
     private static ArrayList<Produit> produits;
 
-    private static void init() {
+ /*   private static void init() {
         produits = new ArrayList<>();
         produits.add(new Produit(1, "laptop Asus", 1, 899.99));
         produits.add(new Produit(2, "jeux Xbox GTA V", 2, 39.99));
@@ -55,5 +55,5 @@ public class ProduitManager {
             }
         }
         return retourProduitParId;
-    }
+    }*/
 }
