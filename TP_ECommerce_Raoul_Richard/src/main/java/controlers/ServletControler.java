@@ -22,15 +22,15 @@ import managers.UserManager;
  */
 @WebServlet(name = "ServletControler", urlPatterns = {"/servletControler"})
 public class ServletControler extends HttpServlet {
-
-    String nom = "pablo";
+/*
+    String nom = "pedro";
     String type_user = "sts";
-    String email = "steve@gmail.com";
+    String email = "st@gmail.com";
     String password = "paul254";
     String prenom = "richard";
     String username = "paul25";
     String adresse = "rue 333 ddfsdf 3323 dsf";
-
+*/
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -44,9 +44,9 @@ public class ServletControler extends HttpServlet {
         //  } else {
         //  ProduitAction.printProductsByCat(request, Integer.parseInt(idCatString));
         // }
-        User user=UserManager.getuser("paul25", "paul254");
-        
-        UserManager.setUser(nom, type_user, email, password, prenom, username, adresse);
+       // User user=UserManager.getuser("paul25", "paul254");
+       // UserManager.updatetuser(, nom, type_user, email, password, prenom, username, adresse);
+       // UserManager.setUser(nom, type_user, email, password, prenom, username, adresse);
         
          
         // 3- Redirection
@@ -62,7 +62,7 @@ public class ServletControler extends HttpServlet {
             out.println("<title>Servlet testmethodes</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet testmethodes at " +user.getUsername()+ "</h1>");
+            out.println("<h1>Servlet testmethodes at </h1>");
             out.println("</body>");
             out.println("</html>");
             
