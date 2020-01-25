@@ -6,14 +6,17 @@
 package controlers;
 
 import actions.ProduitAction;
+import entities.Categorie;
 import entities.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import managers.CategorieManager;
 import managers.UserManager;
 
 /**
@@ -44,9 +47,11 @@ public class ServletControler extends HttpServlet {
         //  } else {
         //  ProduitAction.printProductsByCat(request, Integer.parseInt(idCatString));
         // }
-       // User user=UserManager.getuser("paul25", "paul254");
-       // UserManager.updatetuser(, nom, type_user, email, password, prenom, username, adresse);
-       // UserManager.setUser(nom, type_user, email, password, prenom, username, adresse);
+        
+       CategorieManager.setcategorie(1, "Portable");
+       CategorieManager.setcategorie(2, "Jeux");
+       CategorieManager.setcategorie(3, "Cellulaire");
+       CategorieManager.setcategorie(4, "Ecran");
         
          
         // 3- Redirection
@@ -60,7 +65,7 @@ public class ServletControler extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet testmethodes</title>");            
-            out.println("</head>");
+            out.println("</head>");                       
             out.println("<body>");
             out.println("<h1>Servlet testmethodes at </h1>");
             out.println("</body>");
