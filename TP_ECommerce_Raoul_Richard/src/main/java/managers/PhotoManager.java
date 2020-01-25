@@ -18,7 +18,7 @@ public class PhotoManager {
 
     private static ArrayList<Photos> listPhoto;
 
-    public static ArrayList<Photos> getPhotoByCategorie(Categorie idCategorie) {
+  /*  public static ArrayList<Photos> getPhotoByCategorie(Categorie idCategorie) {
         ArrayList<Photos> listPhotoByCategorie = new ArrayList<>();
         if (listPhoto != null) {
 
@@ -45,6 +45,6 @@ public class PhotoManager {
 
         }
         return listPhotoByIdProduit;
-    }
+    }*/
 
 }
