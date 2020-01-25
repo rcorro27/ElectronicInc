@@ -5,73 +5,45 @@
  */
 package controlers;
 
-import actions.ProduitAction;
-import entities.User;
+import entities.Produit;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import managers.UserManager;
 
 /**
  *
  * @author rrobilla
  */
-@WebServlet(name = "ServletControler", urlPatterns = {"/servletControler"})
-public class ServletControler extends HttpServlet {
+@WebServlet(name = "CommandeItemsControler", urlPatterns = {"/commandeItemsControler"})
+public class CommandeItemsControler extends HttpServlet {
 
-    String nom = "pablo";
-    String type_user = "sts";
-    String email = "steve@gmail.com";
-    String password = "paul254";
-    String prenom = "richard";
-    String username = "paul25";
-    String adresse = "rue 333 ddfsdf 3323 dsf";
-
+   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-      
-        //1 - recupe les parametres
-        String idCatString = request.getParameter("idCategorie");
-
-        // 2 -  appelle les actions en fonction des params
-        //  if (idCatString == null) {
-        //   ProduitAction.printAllProducts(request);
-        //  } else {
-        //  ProduitAction.printProductsByCat(request, Integer.parseInt(idCatString));
-        // }
-        User user=UserManager.getuser("paul25", "paul254");
-        
-        UserManager.setUser(nom, type_user, email, password, prenom, username, adresse);
-        
-         
-        // 3- Redirection
-        // request.getRequestDispatcher("page1test.jsp").forward(request, response);
-                
-                
-                
-                   try ( PrintWriter out = response.getWriter()) {
+        HashMap<Integer,Produit> panier = (HashMap)request.getSession().getAttribute("panier");
+        HashMap<Integer, Integer> quantites = new HashMap();
+        for(Integer i:panier.keySet()){
+            quantites.put(i, Integer.parseInt(request.getParameter(String.valueOf(panier.get(i).getId()))));
+        }
+        try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet testmethodes</title>");            
+            out.println("<title>Servlet NewServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet testmethodes at " +user.getUsername()+ "</h1>");
+            for(Integer i:quantites.keySet()) {
+                out.println("id "+i+" "+"quantite "+quantites.get(i)+" Prix "+panier.get(i).getPrix()*quantites.get(i));
+            }
             out.println("</body>");
             out.println("</html>");
-            
-          
-            
-            
-          
-            
-            
         }
     }
 

@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class PhotoManager {
 
-    private static ArrayList<Photos> listPhoto;
+    /*private static ArrayList<Photos> listPhoto;
 
   /*  public static ArrayList<Photos> getPhotoByCategorie(Categorie idCategorie) {
         ArrayList<Photos> listPhotoByCategorie = new ArrayList<>();

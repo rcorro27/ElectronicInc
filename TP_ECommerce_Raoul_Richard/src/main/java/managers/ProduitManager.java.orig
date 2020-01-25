@@ -20,7 +20,19 @@ import services.ConnexionBDD;
  */
 public class ProduitManager {
 
+<<<<<<< HEAD
+    private static ArrayList<Produit> produits;
+
+ /*   private static void init() {
+        produits = new ArrayList<>();
+        produits.add(new Produit(1, "laptop Asus", 1, 899.99));
+        produits.add(new Produit(2, "jeux Xbox GTA V", 2, 39.99));
+        produits.add(new Produit(3, "Ecran Acer 20p", 3, 199.99));
+        produits.add(new Produit(4, "Samsung Galaxy", 4, 699.99));
+    }
+=======
     private static String queryGetAll = "select * from produit";
+>>>>>>> 6e2753d3d32df84aaeadd961611cec51a0edd736
 
     public static ArrayList<Produit> getAll() {
         ArrayList<Produit> retour = null;
@@ -99,6 +111,11 @@ public class ProduitManager {
         } catch (SQLException ex) {
             Logger.getLogger(ProduitManager.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return p;
+<<<<<<< HEAD
+        return retourProduitParId;
     }*/
+=======
+        return p;
+    }
+>>>>>>> 6e2753d3d32df84aaeadd961611cec51a0edd736
 }

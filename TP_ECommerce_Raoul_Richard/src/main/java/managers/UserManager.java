@@ -5,7 +5,7 @@
  */
 package managers;
 
-import Service.ConnexionBD;
+import services.ConnexionBDD;
 import entities.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -28,7 +28,7 @@ public class UserManager {
             + "VALUES (?,?,?,?,?,?,?) ";
     private final static String url = "jdbc:mysql://localhost:3310/bd_boutique?serverTimezone=UTC";
 
-    public static User getuser(String username, String password) {
+    /*public static User getuser(String username, String password) {
         User user = null;
         try {
             PreparedStatement preparedStatement = ConnexionBD.getPreparedStatement(querygetuser);
@@ -45,14 +45,13 @@ public class UserManager {
                 }
             }
 
-            ConnexionBD.close();
+            ConnexionBDD.close();
 
         } catch (SQLException ex) {
             Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         return user;
-    }
-    
+    }*/
     public static void setUser(String nom, String type_user, String email, String password, String prenom, String username, String adresse) {
         //change
         try {
@@ -67,10 +66,8 @@ public class UserManager {
             
             preparedStatement.execute();
             ConnexionBD.close();
-        
         } catch (SQLException ex) {
             Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
-
