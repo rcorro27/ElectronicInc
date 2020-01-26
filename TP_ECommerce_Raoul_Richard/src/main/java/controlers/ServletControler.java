@@ -7,6 +7,7 @@ package controlers;
 
 import actions.ProduitAction;
 import entities.Categorie;
+import entities.Photos;
 import entities.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import managers.CategorieManager;
+import managers.PhotoManager;
 import managers.UserManager;
 
 /**
@@ -25,7 +27,8 @@ import managers.UserManager;
  */
 @WebServlet(name = "ServletControler", urlPatterns = {"/servletControler"})
 public class ServletControler extends HttpServlet {
-/*
+
+    /*
     String nom = "pedro";
     String type_user = "sts";
     String email = "st@gmail.com";
@@ -33,50 +36,42 @@ public class ServletControler extends HttpServlet {
     String prenom = "richard";
     String username = "paul25";
     String adresse = "rue 333 ddfsdf 3323 dsf";
-*/
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-      
-        //1 - recupe les parametres
-        String idCatString = request.getParameter("idCategorie");
 
+        //1 - recupe les parametres
+       /* String idCatString = request.getParameter("idCategorie");
+        ArrayList<Photos> listurl = PhotoManager.getphotobyidproduit(1);
+        */
         // 2 -  appelle les actions en fonction des params
         //  if (idCatString == null) {
         //   ProduitAction.printAllProducts(request);
         //  } else {
         //  ProduitAction.printProductsByCat(request, Integer.parseInt(idCatString));
         // }
-        
-       CategorieManager.setcategorie(1, "Portable");
-       CategorieManager.setcategorie(2, "Jeux");
-       CategorieManager.setcategorie(3, "Cellulaire");
-       CategorieManager.setcategorie(4, "Ecran");
-        
-         
+        //PhotoManager.deletephotos(1);
+        // PhotoManager.setphoto(2, 1, "jeux");
+        //PhotoManager.setphoto(3, 4, "portable");
+        // PhotoManager.updateimage(2, "cars");
         // 3- Redirection
         // request.getRequestDispatcher("page1test.jsp").forward(request, response);
-                
-                
-                
-                   try ( PrintWriter out = response.getWriter()) {
+        try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet testmethodes</title>");            
-            out.println("</head>");                       
-            out.println("<body>");
-            out.println("<h1>Servlet testmethodes at </h1>");
+            out.println("<title>Servlet testmethodes</title>");
+            out.println("</head>");
+           /* for (Photos photos : listurl) {
+                out.println("<h1>Servlet testmethodes at " + photos.getUrlimage() + "</h1>");
+                out.println("<h1>Servlet testmethodes at " + photos.getId() + "</h1>");
+            }*/
+
             out.println("</body>");
             out.println("</html>");
-            
-          
-            
-            
-          
-            
-            
+
         }
     }
 

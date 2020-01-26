@@ -12,18 +12,25 @@ package entities;
 public class Photos {
 
   
-    private String urlimage;
+    
     private int id;
     private int produitid;
+    private String urlimage;
 
     public Photos() {
     }
 
-    public Photos(String urlimage, int id, int produitid) {
+    public Photos( int id, int produitid, String urlimage) {
         this.urlimage = urlimage;
         this.id = id;
         this.produitid = produitid;
     }
+
+    public Photos(int id, String urlimage) {
+        this.id = id;
+        this.urlimage = urlimage;
+    }
+    
 
     public String getUrlimage() {
         return urlimage;

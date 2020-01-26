@@ -16,6 +16,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -39,7 +40,7 @@ public class UserManager {
 
     private final static String url = "jdbc:mysql://localhost:3310/bd_boutique?serverTimezone=UTC";
 
-    public static User getuser(String username, String password) {
+    public static User getuser(String username, String password ,HttpServletRequest request ) {
         User user = null;
         try {
             PreparedStatement preparedStatement = ConnexionBDD.getPreparedStatement(querygetuser);
@@ -64,7 +65,7 @@ public class UserManager {
         return user;
     }
 
-    public static void setUser(String nom, String type_user, String email, String password, String prenom, String username, String adresse) {
+    public static void setUser(String nom, String type_user, String email, String password, String prenom, String username, String adresse,HttpServletRequest request) {
 
         try {
             PreparedStatement preparedStatement = ConnexionBDD.getPreparedStatement(querySetuser);
