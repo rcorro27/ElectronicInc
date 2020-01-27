@@ -117,5 +117,11 @@ public class UserManager {
             Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    public static boolean valider(String a, String b) {
+        boolean flag = false;
+        if((UserManager.getuser(a, b))!= null) {
+            flag = true;
+        }
+        return flag;
+    }
 }
