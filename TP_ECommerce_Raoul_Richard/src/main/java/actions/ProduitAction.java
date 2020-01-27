@@ -13,7 +13,7 @@ import managers.ProduitManager;
  * @author rrobilla
  */
 public class ProduitAction {
-   /* public static void printAllProducts(HttpServletRequest request){
+    public static void printAllProducts(HttpServletRequest request){
         request.setAttribute("listProducts", ProduitManager.getAll());
         
        
@@ -21,5 +21,5 @@ public class ProduitAction {
     
     public static void printProductsByCat(HttpServletRequest request, int idCategorie){
         request.setAttribute("listProducts", ProduitManager.getByIdCategorie(idCategorie));
-    }*/
+    }
 }
