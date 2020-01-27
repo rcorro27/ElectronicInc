@@ -5,8 +5,12 @@
  */
 package controlers;
 
+import actions.CommandeAction;
+import entities.Produit;
 import entities.User;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,6 +41,9 @@ public class CommandeControler extends HttpServlet {
         java.sql.Date sqlDate = new java.sql.Date(date.getTime());
         User user = (User) request.getSession().getAttribute("user");
         CommandeManager.setOrder(user.getId(), sqlDate, (Double)request.getSession().getAttribute("prixTotal"));
+        CommandeAction.setOrderItems(request);
+        
+        //request.getRequestDispatcher("servletControler").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
