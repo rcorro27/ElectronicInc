@@ -19,14 +19,19 @@ import managers.ProduitManager;
  * @author rrobilla
  */
 public class ProduitAction {
-   public static void printAllProducts(HttpServletRequest request){
-//        request.setAttribute("listProducts", ProduitManager.getAll());
-        ArrayList<Produit> produits = ProduitManager.getAll();
-        ArrayList<Categorie> categories = CategorieManager.getall();
-        ArrayList<Photos> photos=PhotoManager.getall();
-        request.setAttribute("produits", produits);
-        request.setAttribute("categories", categories);
-        request.setAttribute("photos", photos);
+
+//   public static void printAllProducts(HttpServletRequest request){
+////        request.setAttribute("listProducts", ProduitManager.getAll());
+//        ArrayList<Produit> produits = ProduitManager.getAll();
+//        ArrayList<Categorie> categories = CategorieManager.getall();
+//        ArrayList<Photos> photos=PhotoManager.getall();
+//        request.setAttribute("produits", produits);
+//        request.setAttribute("categories", categories);
+//        request.setAttribute("photos", photos);
+
+    public static void printAllProducts(HttpServletRequest request){
+        request.setAttribute("listProducts", ProduitManager.getAll());
+
         
                
        

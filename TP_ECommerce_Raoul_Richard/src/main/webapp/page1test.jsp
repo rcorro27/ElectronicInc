@@ -8,7 +8,7 @@
 <%@page import="entities.Produit"%>
 <%@page import="java.util.ArrayList"%>
 <%
-    ArrayList<Produit> produits = (ArrayList<Produit>) request.getAttribute("produits");
+    ArrayList<Produit> produits = (ArrayList<Produit>) request.getAttribute("listproducts");
     ArrayList<Categorie> categories = (ArrayList<Categorie>) request.getAttribute("categories");
     ArrayList<Photos> photos=(ArrayList<Photos>) request.getAttribute("photos");
     String idProduit = null;
@@ -35,17 +35,17 @@
             </tr>
             <%for (Produit p : produits) {%>
 
-            <%idProduit = String.valueOf(p.getId());%>
+    //         <%idProduit = String.valueOf(p.getId());%>
             <tr> 
                 <td><%=p.getProduit_name()%></td>
-                <%}%>
+                
             </tr>
-
+                <%}%>
         </table>
         <a href="panierControler?idProduit=<%=idProduit%>">ajouter au panier</a>
         <a href="panierControler?lien=1&idProduit=<%=idProduit%>">Afficher panier</a>
         
-        <div>
+<!--        <div>
     <ul>
 <% for(Categorie c : categories){%>
 
@@ -54,7 +54,7 @@
     <%}
 %>
 </ul>
-</div>
+</div>-->
 
 
     </body>

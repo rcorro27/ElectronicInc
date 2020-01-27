@@ -40,7 +40,7 @@ public class UserManager {
 
     private final static String url = "jdbc:mysql://localhost:3310/bd_boutique?serverTimezone=UTC";
 
-    public static User getuser(String username, String password ,HttpServletRequest request ) {
+    public static User getuser(String username, String password ) {
         User user = null;
         try {
             PreparedStatement preparedStatement = ConnexionBDD.getPreparedStatement(querygetuser);
@@ -118,5 +118,11 @@ public class UserManager {
             Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    public static boolean valider(String a, String b) {
+        boolean flag = false;
+        if((UserManager.getuser(a, b))!= null) {
+            flag = true;
+        }
+        return flag;
+    }
 }

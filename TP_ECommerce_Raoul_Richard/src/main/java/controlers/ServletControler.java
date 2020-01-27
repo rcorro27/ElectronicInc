@@ -42,26 +42,65 @@ public class ServletControler extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         //1 - recupe les parametres
-       /* String idCatString = request.getParameter("idCategorie");
+        String idCatString = request.getParameter("idCategorie");
         ArrayList<Photos> listurl = PhotoManager.getphotobyidproduit(1);
-        */
-        // 2 -  appelle les actions en fonction des params
-        //  if (idCatString == null) {
-        //   ProduitAction.printAllProducts(request);
-        //  } else {
-        //  ProduitAction.printProductsByCat(request, Integer.parseInt(idCatString));
-        // }
+        
+        //2 -  appelle les actions en fonction des params
+
+          if (idCatString == null) {
+           ProduitAction.printAllProducts(request);
+          } else {
+          ProduitAction.printProductsByCat(request, Integer.parseInt(idCatString));
+         }
         //PhotoManager.deletephotos(1);
-        // PhotoManager.setphoto(2, 1, "jeux");
+         //PhotoManager.setphoto(2, 1, "jeux");
         //PhotoManager.setphoto(3, 4, "portable");
         // PhotoManager.updateimage(2, "cars");
-        // 3- Redirection
-        // request.getRequestDispatcher("page1test.jsp").forward(request, response);
+         //3- Redirection
+        request.getRequestDispatcher("page1test.jsp").forward(request, response);
   
         
         ProduitAction.printAllProducts(request);
         
         request.getRequestDispatcher("page1test.jsp").forward(request, response);
+
+//          if (idCatString == null) {
+//           ProduitAction.printAllProducts(request);
+//         } else {
+//          ProduitAction.printProductsByCat(request, Integer.parseInt(idCatString));
+//         }
+        
+//       CategorieManager.setcategorie(1, "Portable");
+//       CategorieManager.setcategorie(2, "Jeux");
+//       CategorieManager.setcategorie(3, "Cellulaire");
+//       CategorieManager.setcategorie(4, "Ecran");
+        
+         
+        // 3- Redirection
+         request.getRequestDispatcher("page1test.jsp").forward(request, response);
+                
+                
+                
+//                   try ( PrintWriter out = response.getWriter()) {
+//            /* TODO output your page here. You may use following sample code. */
+//            out.println("<!DOCTYPE html>");
+//            out.println("<html>");
+//            out.println("<head>");
+//            out.println("<title>Servlet testmethodes</title>");            
+//            out.println("</head>");                       
+//            out.println("<body>");
+//            out.println("<h1>Servlet testmethodes at </h1>");
+//            out.println("</body>");
+//            out.println("</html>");
+//            
+//          
+//            
+//            
+//          
+//            
+//            
+//        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

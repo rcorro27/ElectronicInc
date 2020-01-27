@@ -5,7 +5,9 @@
  */
 package controlers;
 
+import actions.CommandeAction;
 import entities.Produit;
+import entities.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -14,35 +16,34 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import managers.CommandeManager;
 
 /**
  *
  * @author rrobilla
  */
-@WebServlet(name = "CommandeItemsControler", urlPatterns = {"/commandeItemsControler"})
-public class CommandeItemsControler extends HttpServlet {
+@WebServlet(name = "CommandeControler", urlPatterns = {"/commandeControler"})
+public class CommandeControler extends HttpServlet {
 
-   
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String val="1";
-        HashMap<Integer,Produit> panier = (HashMap)request.getSession().getAttribute("panier");
-        HashMap<Integer, Integer> quantites = new HashMap();
-        Double prixTotal = 0.0;
-        for(Integer i:panier.keySet()){
-            quantites.put(i, Integer.parseInt(request.getParameter(String.valueOf(panier.get(i).getId()))));
-            prixTotal+= quantites.get(i)*panier.get(i).getPrix();
-        }
-        request.getSession().setAttribute("prixTotal", prixTotal);
-        request.getSession().setAttribute("quantites", quantites);
-        if(request.getSession().getAttribute("user")==null) {
-            request.setAttribute("val", val);
-            request.getRequestDispatcher("loginControler").forward(request, response);
-        }
-        else{
-            request.getRequestDispatcher("commande.jsp").forward(request, response);
-        }
+        java.util.Date date = new java.util.Date();
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+        User user = (User) request.getSession().getAttribute("user");
+        CommandeManager.setOrder(user.getId(), sqlDate, (Double)request.getSession().getAttribute("prixTotal"));
+        CommandeAction.setOrderItems(request);
+        
+        //request.getRequestDispatcher("servletControler").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
