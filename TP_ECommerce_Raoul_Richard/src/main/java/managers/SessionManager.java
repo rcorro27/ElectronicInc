@@ -5,10 +5,27 @@
  */
 package managers;
 
+import entities.User;
+import javax.servlet.http.HttpSession;
+
 /**
  *
  * @author rcorroch
  */
 public class SessionManager {
-    
+
+    public static HttpSession addinfosession() {
+        HttpSession session = null;
+        Object ajouter = null;
+        String clef = null;
+        session.setAttribute(clef,ajouter );
+        
+        return null;
+    }
+
+    public HttpSession getsession(User user) {
+
+        
+        return null;
+    }
 }

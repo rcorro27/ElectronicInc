@@ -57,22 +57,11 @@ public class ServletControler extends HttpServlet {
         // PhotoManager.updateimage(2, "cars");
         // 3- Redirection
         // request.getRequestDispatcher("page1test.jsp").forward(request, response);
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet testmethodes</title>");
-            out.println("</head>");
-           /* for (Photos photos : listurl) {
-                out.println("<h1>Servlet testmethodes at " + photos.getUrlimage() + "</h1>");
-                out.println("<h1>Servlet testmethodes at " + photos.getId() + "</h1>");
-            }*/
-
-            out.println("</body>");
-            out.println("</html>");
-
-        }
+  
+        
+        ProduitAction.printAllProducts(request);
+        
+        request.getRequestDispatcher("page1test.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
