@@ -16,6 +16,11 @@ public class Produit {
     private int categorie_id;
     private double prix;
     private int stock;
+    private String url_image;
+
+    public String getUrl_image() {
+        return url_image;
+    }
 
     public int getId() {
         return id;
@@ -57,12 +62,13 @@ public class Produit {
         this.stock = stock;
     }
 
-    public Produit(int id, String produit_name, int categorie_id, double prix, int stock) {
+    public Produit(int id, String produit_name, int categorie_id, double prix, int stock, String url_image) {
         this.id = id;
         this.produit_name = produit_name;
         this.categorie_id = categorie_id;
         this.prix = prix;
         this.stock = stock;
+        this.url_image = url_image;
 
     }
 

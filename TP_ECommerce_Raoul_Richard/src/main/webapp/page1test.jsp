@@ -10,7 +10,7 @@
 <%
     ArrayList<Produit> produits = (ArrayList<Produit>) request.getAttribute("listProducts");
     ArrayList<Categorie> categories = (ArrayList<Categorie>) request.getAttribute("categories");
-    ArrayList<Photos> photos=(ArrayList<Photos>) request.getAttribute("photos");
+    ArrayList<Photos> photos = (ArrayList<Photos>) request.getAttribute("photos");
     String idProduit = null;
 
 %>
@@ -30,21 +30,22 @@
             <li><a href="servletControler?idCategorie=4">Jeux videos</a></li>
         </ul>
         <table>
-            <tr>
-                <th>nom</th>
-            </tr>
+            
             <%for (Produit p : produits) {%>
 
-    //         <%idProduit = String.valueOf(p.getId());%>
+            <%idProduit = String.valueOf(p.getId());%>
             <tr> 
-                <td><%=p.getProduit_name()%></td>
-                
+                <th><%=p.getProduit_name()%></th>
+
             </tr>
-                <%}%>
+            <tr>
+                <td><img src="images/<%=p.getUrl_image()%>" alt=""</td>
+            </tr>
+            <%}%>
         </table>
         <a href="panierControler?idProduit=<%=idProduit%>">ajouter au panier</a>
         <a href="panierControler?lien=1&idProduit=<%=idProduit%>">Afficher panier</a>
-        
+
 
 
 
