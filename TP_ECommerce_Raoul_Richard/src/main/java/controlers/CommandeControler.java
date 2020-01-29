@@ -6,6 +6,7 @@
 package controlers;
 
 import actions.CommandeAction;
+import actions.PanierAction;
 import entities.Produit;
 import entities.User;
 import java.io.IOException;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import managers.CommandeManager;
+import managers.MailManager;
 
 /**
  *
@@ -42,6 +44,9 @@ public class CommandeControler extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user");
         CommandeManager.setOrder(user.getId(), sqlDate, (Double)request.getSession().getAttribute("prixTotal"));
         CommandeAction.setOrderItems(request);
+        PanierAction.delPanier();
+        MailManager.sendEmail(MailManager.getMessage(), user.getEmail(), "Votre commande");
+        request.getRequestDispatcher("servletControler").forward(request, response);
         
         //request.getRequestDispatcher("servletControler").forward(request, response);
     }

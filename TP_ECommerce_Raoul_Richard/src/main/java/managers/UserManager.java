@@ -23,8 +23,8 @@ import javax.servlet.http.HttpServletRequest;
  * @author rcorroch
  */
 public class UserManager {
-
-    private final static String querygetuser = "Select id, username from user where username = ? and password = ? ";
+    
+    private final static String querygetuser = "Select id, username, email from user where username = ? and password = ? ";
     private final static String querySetuser = "INSERT INTO user(username,password,prenom,nom,adresse,email,type_user)\n"
             + "VALUES (?,?,?,?,?,?,?) ";
     private final static String querydeleteuser = "delete FROM bd_boutique.user where id = ? ";
@@ -37,39 +37,40 @@ public class UserManager {
             + "    email = ? ,\n"
             + "    type_user = ? \n"
             + "    where id = ? ;";
-
+    
     private final static String url = "jdbc:mysql://localhost:3310/bd_boutique?serverTimezone=UTC";
-
-    public static User getuser(String username, String password ) {
+    
+    public static User getuser(String username, String password) {
         User user = null;
         try {
             PreparedStatement preparedStatement = ConnexionBDD.getPreparedStatement(querygetuser);
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
-
+            
             ResultSet resultSet = preparedStatement.executeQuery();
-
+            
             if (resultSet.isBeforeFirst()) {
                 while (resultSet.next()) {
-
+                    
                     user = new User(resultSet.getInt("id"),
-                            resultSet.getString("username"));
+                            resultSet.getString("username"),
+                            resultSet.getString("email"));
                 }
             }
-
+            
             ConnexionBDD.close();
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         return user;
     }
-
-    public static void setUser(String nom, String type_user, String email, String password, String prenom, String username, String adresse,HttpServletRequest request) {
-
+    
+    public static void setUser(String nom, String type_user, String email, String password, String prenom, String username, String adresse, HttpServletRequest request) {
+        
         try {
             PreparedStatement preparedStatement = ConnexionBDD.getPreparedStatement(querySetuser);
-
+            
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             preparedStatement.setString(3, prenom);
@@ -77,16 +78,16 @@ public class UserManager {
             preparedStatement.setString(5, adresse);
             preparedStatement.setString(6, email);
             preparedStatement.setString(7, type_user);
-
+            
             preparedStatement.execute();
             ConnexionBDD.close();
         } catch (SQLException ex) {
             Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     public static void deleteuser(int id) {
-
+        
         try {
             PreparedStatement preparedStatement = ConnexionBDD.getPreparedStatement(querydeleteuser);
             preparedStatement.setInt(1, id);
@@ -96,9 +97,9 @@ public class UserManager {
             Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     public static void updatetuser(int id, String nom, String type_user, String email, String password, String prenom, String username, String adresse) {
-
+        
         try {
             PreparedStatement preparedStatement = ConnexionBDD.getPreparedStatement(queryupdateeuser);
             
@@ -111,16 +112,17 @@ public class UserManager {
             preparedStatement.setString(6, email);
             preparedStatement.setString(7, type_user);
             preparedStatement.setInt(8, id);
-
+            
             preparedStatement.execute();
             ConnexionBDD.close();
         } catch (SQLException ex) {
             Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     public static boolean valider(String a, String b) {
         boolean flag = false;
-        if((UserManager.getuser(a, b))!= null) {
+        if ((UserManager.getuser(a, b)) != null) {
             flag = true;
         }
         return flag;

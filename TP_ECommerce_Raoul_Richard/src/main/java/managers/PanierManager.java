@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class PanierManager {
 
-    private static HashMap<Integer, Produit> panier=null;
+    private static HashMap<Integer, Produit> panier = null;
 
     public static void addProduit(int produitId, HttpServletRequest request) {
         if (panier == null) {
@@ -26,5 +26,18 @@ public class PanierManager {
 
     public static HashMap getPanier() {
         return panier;
+    }
+
+    public static void delProduit(int id, HttpServletRequest request) {
+        //panier = new HashMap<>();
+        if (!panier.isEmpty() && panier != null) {
+            panier.remove(id);
+        }
+    }
+
+    public static void delPanier() {
+        for (Integer i : panier.keySet()) {
+            panier.remove(i);
+        }
     }
 }

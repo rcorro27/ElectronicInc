@@ -33,8 +33,11 @@ public class PanierControler extends HttpServlet {
             request.getRequestDispatcher("servletControler").forward(request, response);
         }
         else {
+            if(request.getParameter("del")!=null) {
+                PanierAction.delProduitPanier(request, Integer.parseInt(request.getParameter("del")));
+            }
             PanierAction.afficherPanier(request);
-            request.getRequestDispatcher("panier.jsp?idProduit="+id).forward(request, response);
+            request.getRequestDispatcher("panier.jsp").forward(request, response);
         }
     }
 

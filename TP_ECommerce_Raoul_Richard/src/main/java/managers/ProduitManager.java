@@ -82,8 +82,8 @@ public class ProduitManager {
         Produit p = null;
         try {
             
-            PreparedStatement preparedStatement = ConnexionBDD.getPreparedStatement(queryGetByIdCategorie);
-            preparedStatement.setInt(1, id - 1);
+            PreparedStatement preparedStatement = ConnexionBDD.getPreparedStatement(queryGetByIdProduit);
+            preparedStatement.setInt(1, id);
             
             ResultSet resultSet = preparedStatement.executeQuery();
             
