@@ -66,10 +66,10 @@
         <footer>
             <div id='divfooterleft'><img src="images/Technology_settings-08-512.png" alt="logo" style="width:32px;">
                 <b><sup><span style="font-size:25px;">Electronik INC.&copy;</span></sup></b><br><br>
-                <a href="tel:5551234567"><img src="icones/phonesquare512.png" alt="phone" width="20">555-1234567</a><br><br>
-                <a href="mailto:raoul_robillard@hotmail.com"><img src="icones/mailblack512.png" alt="mail" width="20">raoul_robillard@hotmail.com</a><br><br>
-                <img src="icones/pin9512.png" alt="address" width="20">1234 Blv. Papineau<br>
-                <img src="icones/capture1.png" alt="address" width="20">Mtl, QC, H1X 2K5
+                <a href="tel:5551234567"><img src="images/phonesquare512.png" alt="phone" width="20">555-1234567</a><br><br>
+                <a href="mailto:raoul_robillard@hotmail.com"><img src="images/mailblack512.png" alt="mail" width="20">raoul_robillard@hotmail.com</a><br><br>
+                <img src="images/pin9512.png" alt="address" width="20">1234 Blv. Papineau<br>
+                <img src="images/capture1.png" alt="address" width="20">Mtl, QC, H1X 2K5
             </div>
             <div id='divfooter'><h2 style='padding-top:20px;'>Horaire</h2>
                 <ul style="list-style-type:none;">

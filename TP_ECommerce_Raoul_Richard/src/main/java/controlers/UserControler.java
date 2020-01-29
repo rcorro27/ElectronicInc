@@ -31,17 +31,19 @@ public class UserControler extends HttpServlet {
         String nom = request.getParameter("nom");
         String adresse = request.getParameter("adresse");
         String email = request.getParameter("email");
-        String type_user = request.getParameter("type_user");
+        //String type_user = request.getParameter("type_user");
 
         String val = "0";
-        if (UserManager.valider(request.getParameter("username"), request.getParameter("pwd"))) {
+        if (UserManager.valider(request.getParameter("usern"), request.getParameter("pswd"))) {
+            request.getSession().setAttribute("user", UserAction.getUser(request, request.getParameter("usern"), request.getParameter("pswd")));
+            request.getRequestDispatcher("servletControler").forward(request, response);
+        } else if (username != null && UserManager.checkUser(username)) {
+            request.setAttribute("check", "1");
+            request.getRequestDispatcher("loginControler").forward(request, response);
+        } else if (username != null) {
+            UserAction.setuser(request, username, password, prenom, nom, adresse, email, "client");
             request.getSession().setAttribute("user", UserAction.getUser(request, request.getParameter("username"), request.getParameter("pwd")));
             request.getRequestDispatcher("servletControler").forward(request, response);
-        } else if (prenom != null && nom != null) {
-            UserAction.setuser(request, username, password, prenom, nom, adresse, email, type_user);
-            request.getSession().setAttribute("user", UserAction.getUser(request, request.getParameter("username"), request.getParameter("pwd")));
-            request.getRequestDispatcher("servletControler").forward(request, response);
-
         } else {
             request.setAttribute("val", val);
             request.getRequestDispatcher("loginControler").forward(request, response);
@@ -49,7 +51,7 @@ public class UserControler extends HttpServlet {
 
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
