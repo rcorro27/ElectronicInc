@@ -35,6 +35,10 @@ public class LoginControler extends HttpServlet {
         if(request.getSession().getAttribute("user")==null) {
             request.getRequestDispatcher("loginSignUp.jsp").forward(request, response);
         }
+        else {
+            request.getSession().removeAttribute("user");
+            request.getRequestDispatcher("servletControler").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

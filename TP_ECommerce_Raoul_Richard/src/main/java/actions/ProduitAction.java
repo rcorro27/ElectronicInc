@@ -28,16 +28,14 @@ public class ProduitAction {
 //        request.setAttribute("produits", produits);
 //        request.setAttribute("categories", categories);
 //        request.setAttribute("photos", photos);
-
-    public static void printAllProducts(HttpServletRequest request){
+    public static void printAllProducts(HttpServletRequest request) {
         request.setAttribute("listProducts", ProduitManager.getAll());
-
-        
-               
-       
     }
-    
-    public static void printProductsByCat(HttpServletRequest request, int idCategorie){
+
+    public static void printProductsByCat(HttpServletRequest request, int idCategorie) {
         request.setAttribute("listProducts", ProduitManager.getByIdCategorie(idCategorie));
+    }
+    public static void printCategories(HttpServletRequest request) {
+        request.setAttribute("categories", CategorieManager.getall());
     }
 }
