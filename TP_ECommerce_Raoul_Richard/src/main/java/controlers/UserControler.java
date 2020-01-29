@@ -22,20 +22,31 @@ import managers.UserManager;
 @WebServlet(name = "UserControler", urlPatterns = {"/userControler"})
 public class UserControler extends HttpServlet {
 
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String username = request.getParameter("username");
+        String password = request.getParameter("pwd");
+        String prenom = request.getParameter("prenom");
+        String nom = request.getParameter("nom");
+        String adresse = request.getParameter("adresse");
+        String email = request.getParameter("email");
+        String type_user = request.getParameter("type_user");
+
         String val = "0";
-        if(UserManager.valider(request.getParameter("username"), request.getParameter("pwd"))) {
+        if (UserManager.valider(request.getParameter("username"), request.getParameter("pwd"))) {
             request.getSession().setAttribute("user", UserAction.getUser(request, request.getParameter("username"), request.getParameter("pwd")));
             request.getRequestDispatcher("servletControler").forward(request, response);
-        }
-        else {
+        } else if (prenom != null && nom != null) {
+            UserAction.setuser(request, username, password, prenom, nom, adresse, email, type_user);
+            request.getSession().setAttribute("user", UserAction.getUser(request, request.getParameter("username"), request.getParameter("pwd")));
+            request.getRequestDispatcher("servletControler").forward(request, response);
+
+        } else {
             request.setAttribute("val", val);
             request.getRequestDispatcher("loginControler").forward(request, response);
         }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

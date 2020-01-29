@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%String val = (String)request.getAttribute("val");%>
+<%String val = (String) request.getAttribute("val");%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,14 +13,36 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="userControler">
-            <legend name="login">
-                Username <input type="text" name="username"/></br>
-                Password <input type="text" name="pwd"/></br>
-                <input type="submit"/></br>               
-        </form>
-        <%if(val=="0") {%>
-            username ou password incorrect
-            <%}%>
+        <fieldset>
+            <form action="userControler">
+                <legend name="login">
+                    <p>Username <input type="text" name="username"/></p>
+                    <p>Password <input type="text" name="pwd"/></p>
+                    <input type="submit"/></br>               
+            </form>
+        </fieldset>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+
+        <fieldset>
+            <form action="userControler">
+                <legend name="register">
+                    <p>Username <input type="text" name="username"/></p>
+                    <p>Password <input type="text" name="pwd"/></p>
+                    <p>Prenom <input type="text" name="prenom"/></p>
+                    <p>Nom <input type="text" name="nom"/></p>
+                    <p>Adresse <input type="text" name="adresse"/></p>
+                    <p>Email <input type="text" name="email"/></p></p>
+                    <p>Client <input type="radio" name="type_user" value="client" checked> </p>
+                    <p> Vendeur   <input type="radio" name="type_user" value="vendeur"></p>
+
+                    <input type="submit"/></br>               
+            </form>
+        </fieldset>
+        <%if (val == "0") {%>
+        username ou password incorrect
+        <%}%>
     </body>
 </html>

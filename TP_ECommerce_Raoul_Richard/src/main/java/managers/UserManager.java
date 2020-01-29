@@ -66,7 +66,7 @@ public class UserManager {
         return user;
     }
     
-    public static void setUser(String nom, String type_user, String email, String password, String prenom, String username, String adresse, HttpServletRequest request) {
+    public static void setUser(String username, String password, String prenom, String nom, String adresse, String email, String type_user, HttpServletRequest request) {
         
         try {
             PreparedStatement preparedStatement = ConnexionBDD.getPreparedStatement(querySetuser);
