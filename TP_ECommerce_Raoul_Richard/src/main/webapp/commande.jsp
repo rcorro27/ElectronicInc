@@ -13,26 +13,33 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css_richard.css" rel="stylesheet" type="text/css"/>
         <title>JSP Page</title>
     </head>
     <body>
-        <table>
-            <tr>
-                <th>Produit</th>
-                <th>Quantite</th>
-                <th>Prix</th>
-            </tr>
-            <%for (Integer i : panier.keySet()) {%>
-            <tr>
-                <td><%=panier.get(i).getProduit_name()%></td>
-                <td><%=quantites.get(i)%></td>
-                <td><%=panier.get(i).getPrix() * quantites.get(i)%></td>
-            </tr>
-            <%}%>
-        </table>
-        Total: <%=request.getSession().getAttribute("prixTotal")%>
-        <form action="commandeControler">
-            <input type="submit" value="Payer"/>
-        </form>
+        <fieldset>
+            <table>
+                <tr>
+                    <th>Produit</th>
+                    <th>Quantite</th>
+                    <th>Prix</th>
+                </tr>
+                <%for (Integer i : panier.keySet()) {%>
+                <tr>
+                    <td><%=panier.get(i).getProduit_name()%></td>
+                    <td><%=quantites.get(i)%></td>
+                    <td><%=panier.get(i).getPrix() * quantites.get(i)%></td>
+                </tr>
+                <%}%>
+            </table>
+        </fieldset>
+        <article>
+            Total: <%=request.getSession().getAttribute("prixTotal")%>
+        </article>
+        <article>
+            <form action="commandeControler">
+                <input type="submit" value="Payer"/>
+            </form>
+        </article>
     </body>
 </html>
