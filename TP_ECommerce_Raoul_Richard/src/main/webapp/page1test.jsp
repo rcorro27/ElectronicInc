@@ -39,11 +39,10 @@
 
             </tr>
             <tr>
-                <td><img src="images/<%=p.getUrl_image()%>" alt=""</td>
+                <td><a href="produitControler?id=<%=p.getId()%>"><img src="images/<%=p.getUrl_image()%>" alt=""/></a></td>
             </tr>
             <%}%>
         </table>
-        <a href="panierControler?idProduit=<%=idProduit%>">ajouter au panier</a>
         <a href="panierControler?lien=1&idProduit=<%=idProduit%>">Afficher panier</a>
 
 
