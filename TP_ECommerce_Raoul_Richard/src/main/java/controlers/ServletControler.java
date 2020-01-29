@@ -44,7 +44,7 @@ public class ServletControler extends HttpServlet {
         //1 - recupe les parametres
         String idCatString = request.getParameter("idCategorie");
         ArrayList<Photos> listurl = PhotoManager.getphotobyidproduit(1);
-        
+        ProduitAction.printCategories(request);
         //2 -  appelle les actions en fonction des params
 
           if (idCatString == null) {
@@ -60,9 +60,7 @@ public class ServletControler extends HttpServlet {
         request.getRequestDispatcher("page1test.jsp").forward(request, response);
   
         
-        ProduitAction.printAllProducts(request);
         
-        request.getRequestDispatcher("page1test.jsp").forward(request, response);
 
 //          if (idCatString == null) {
 //           ProduitAction.printAllProducts(request);
