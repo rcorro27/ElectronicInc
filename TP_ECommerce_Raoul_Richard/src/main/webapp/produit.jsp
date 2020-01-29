@@ -11,18 +11,25 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link href="css_richard.css" rel="stylesheet" type="text/css"/>
+        <title>Produit</title>
     </head>
     <body>
-        <table>
-            <tr>
-                <th><%=p.getProduit_name()%></th>
-            </tr>
-            <tr>
-                <td><img src="images/<%=p.getUrl_image()%>"/></td>
-            </tr>
-        </table>
-        <a href="panierControler?idProduit=<%=p.getId()%>">ajouter au panier</a>
-        <a href="panierControler?lien=1&idProduit=<%=p.getId()%>">Afficher panier</a>
+        <fieldset>
+            <table>
+                <tr>
+                    <th><%=p.getProduit_name()%></th>
+                </tr>
+                <tr>
+                    <td><img id="images" src="images/<%=p.getUrl_image()%>" width="400px"/></td>
+                </tr>
+            </table>
+        </fieldset>
+        <article>      
+            <a href="panierControler?idProduit=<%=p.getId()%>">Ajouter au panier</a>
+        </article>
+        <article> 
+            <a href="panierControler?lien=1&idProduit=<%=p.getId()%>">Afficher panier</a>
+        </article>
     </body>
 </html>

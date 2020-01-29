@@ -10,37 +10,40 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Login/Register</title>
+        <link href="css_richard.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <fieldset>
-            <form action="userControler">
-                <legend name="login">
+        
+            <fieldset>
+                <legend name="login">Login</legend>
+                <form action="userControler">
                     <p>Username <input type="text" name="username"/></p>
                     <p>Password <input type="text" name="pwd"/></p>
-                    <input type="submit"/></br>               
-            </form>
-        </fieldset>
+                    <p><input type="submit"/></br></p>               
+                </form>
+            </fieldset>
+        
         <br/>
         <br/>
         <br/>
         <br/>
-
-        <fieldset>
-            <form action="userControler">
-                <legend name="register">
+        
+            <fieldset>
+                <legend name="register"> Register </legend>
+                <form action="userControler">
                     <p>Username <input type="text" name="username"/></p>
                     <p>Password <input type="text" name="pwd"/></p>
-                    <p>Prenom <input type="text" name="prenom"/></p>
-                    <p>Nom <input type="text" name="nom"/></p>
-                    <p>Adresse <input type="text" name="adresse"/></p>
-                    <p>Email <input type="text" name="email"/></p></p>
-                    <p>Client <input type="radio" name="type_user" value="client" checked> </p>
-                    <p> Vendeur   <input type="radio" name="type_user" value="vendeur"></p>
-
-                    <input type="submit"/></br>               
-            </form>
-        </fieldset>
+                    <p>Prenom   <input type="text" name="prenom"/></p>
+                    <p>Nom      <input type="text" name="nom"/></p>
+                    <p>Adresse  <input type="text" name="adresse"/></p>
+                    <p>Email    <input type="text" name="email"/></p></p>
+                    <p>Client   <input type="radio" name="type_user" value="client" checked> </p>
+                    <p>Vendeur <input type="radio" name="type_user" value="vendeur"></p>
+                    <p> <input type="submit"/></br></P>               
+                </form>
+            </fieldset>
+        
         <%if (val == "0") {%>
         username ou password incorrect
         <%}%>
