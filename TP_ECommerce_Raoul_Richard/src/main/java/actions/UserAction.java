@@ -17,4 +17,12 @@ public class UserAction {
     public static User getUser(HttpServletRequest request, String a, String b) {
         return UserManager.getuser(a, b);
     }
+    public static User setuser(HttpServletRequest request,String username,String password,
+            String prenom,String nom,String adresse ,String email,String type_user){
+            UserManager.setUser(username, password, prenom, nom, adresse, email, type_user, request);
+            return UserManager.getuser(username, password);
+    } 
+    
+    
+   
 }
