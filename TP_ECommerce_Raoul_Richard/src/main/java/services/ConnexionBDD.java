@@ -18,9 +18,9 @@ import java.util.logging.Logger;
  */
 public class ConnexionBDD {
 
-    private static String url = "jdbc:mysql://localhost:3310/bd_boutique?serverTimezone=UTC";
-    private static String login = "root";
-    private static String pwd = "abc123...";
+    private static String url = "jdbc:mysql://localhost:info bdd a ajouter?serverTimezone=UTC";
+    private static String login = "user a ajouter";
+    private static String pwd = "mot de passe a ajouter";
     private static Connection connection;
 
     public static PreparedStatement getPreparedStatement(String query) {
